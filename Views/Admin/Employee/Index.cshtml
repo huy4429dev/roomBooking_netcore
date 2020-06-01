@@ -1,0 +1,79 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Employee";
+}
+@model List<Employee>
+<div class="text-right mb-2">
+         <a href="/admin/employee/create" class="btn btn-primary btn-sm">
+             Thêm nhân viên
+         </a>
+</div>
+<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm" >#ID
+      </th>
+      <th class="th-sm">Họ tên
+      </th>
+      <th class="th-sm text-center">Ảnh đại diện
+      </th>
+      <th class="th-sm text-center">Chức vụ
+      </th>
+      <th class="th-sm">Email
+      </th>
+      <th class="th-sm">Phone
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+      <td >@item.Id</td>
+      <td>@item.FullName</td>
+      <td class="text-center"><img src="@item.Avatar" style="width:50px"></td>
+      <td class="text-center">
+          @if(item.Position == 0){
+            <span>Quản lý</span>
+          }
+          else if((int)item.Position == 1){
+            <span>Đầu bếp</span>
+          }
+          else if((int) item.Position == 2){
+              <span>Phục vụ</span>
+          }
+          else{
+              <span>Lễ tân</span>
+          }
+      </td>
+      <td>@item.Email</td>
+      <td>@item.Phone</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+@section Css{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <style>
+      .show-message{
+        cursor: pointer;
+      }
+      .show-message:hover{
+         color:blue;
+      }
+    </style>
+}
+@section Script{
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable( 
+               {  
+                 "order": [[ 0, "desc" ]]
+               },
+            );
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+}

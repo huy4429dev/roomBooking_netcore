@@ -1,0 +1,127 @@
+@using RoomBooking
+@using RoomBooking.Models
+@using RoomBooking.ViewModels
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model LoginViewModel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Summer - Login Admin</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="~/assets/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="~/common/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="~/common/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="~/common/fontawesome/css/solid.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="~/assets/admin/css/simple-sidebar.css" rel="stylesheet">
+  <link rel="stylesheet" href="~/common/css/mdbootstrap.min.css">
+  <style>
+		.validation-summary-errors {
+			color: #721c24;
+			background-color: #f8d7da;
+			border-color: #f5c6cb;
+			padding: 5px 0;
+		}
+
+		ul {
+			margin-bottom: 0;
+		}
+	</style>
+</head>
+
+<body>
+<div class="container">
+    <section class="form-elegant ">
+
+    <!-- Grid row -->
+    <div class="row justify-content-center mt-5">
+
+        <!-- Grid column -->
+        <div class="col-md-9 col-lg-7 col-xl-5">
+
+        <!--Form without header-->
+        <div class="card">
+
+            <div class="card-body mx-4">
+
+            <!--Header-->
+            <div class="text-center">
+                <h3 class="dark-grey-text mb-5"><strong>Đăng nhập</strong></h3>
+            </div>
+
+            <!--Body-->
+
+            <form method="post" asp-action="login" asp-controller="Admin">
+              <div asp-validation-summary="All"></div>
+              <div class="md-form">
+                  <input type="text" id="Form-username" class="form-control" asp-for="UserName">
+                  <label  asp-for="UserName">Username</label>
+              </div>
+
+              <div class="md-form">
+                  <input type="password" id="Form-pass1" class="form-control" asp-for="Password">
+                  <label asp-for="Password">Your password</label>
+              </div>
+                            <!-- Remember me -->
+              <div class="custom-control custom-checkbox px-0 mb-2">
+                  <label asp-for="RememberMe">
+                      <input asp-for="RememberMe" />
+                      @Html.DisplayNameFor(m => m.RememberMe)
+                  </label>
+              </div>
+              <div class="text-center mb-3">
+                  <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Đăng nhập</button>
+              </div>
+            </form>
+
+            <div class="row my-3 d-flex justify-content-center">
+                <!--Facebook-->
+                <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f blue-text text-center"></i></button>
+                <!--Twitter-->
+                <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter blue-text"></i></button>
+                <!--Google +-->
+                <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g blue-text"></i></button>
+            </div>
+
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer mx-5 pt-3 mb-1">
+
+        </div>
+        <!--/Form without header-->
+
+        </div>
+        <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    </section>
+</div>
+  <!-- Bootstrap core JavaScript -->
+   <script src="~/common/js/jquery-3.5.1.min.js"></script>
+    <script src="~/common/js/jquery-ui.js"></script>
+   <script src="~/assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/common/js/bootstrap.min.js"></script>
+    <script src="~/common/js/popper.min.js"></script>
+    <script src="~/common/js/mdbootstrap.min.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+
+</html>

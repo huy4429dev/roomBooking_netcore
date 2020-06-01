@@ -1,0 +1,28 @@
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Cấu hình phòng";
+}
+
+<h4>
+    Cấu hình phòng
+</h4>
+
+<div class="row">
+    <div class="col-4 mx-auto">
+    <form asp-controller="ConfigRoom" asp-action="Config" method="post">
+        <div asp-validation-summary="All"></div>
+            @if(!String.IsNullOrEmpty(ViewBag.message)){
+                <div class="alert alert-success">@ViewBag.message</div>
+            }
+            <div class="md-form">
+                <input type="text" id="form1" class="form-control" name="countRoom">
+                <label for="form1">Số phòng</label>
+            </div>
+            <div class="md-form">
+                <input type="text" id="form1" class="form-control" name="roomId">
+                <label for="form1">Mã Phòng</label>
+            </div>
+            <button class="btn btn-primary btn-rounded btn-sm my-0" type="submit">Thiết lập</button>
+    </form>
+    </div>
+</div>

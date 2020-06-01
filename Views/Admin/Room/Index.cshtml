@@ -1,0 +1,39 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Danh sách phòng";
+}
+@model List<Room>
+<h4>
+    Danh sách phòng
+</h4>
+ 
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-3 mb-3">
+            <a style="color:black" href="/admin/room/@item.Id">
+                <img width="150" src="/uploads/house.png" alt="">
+                <ul>
+                    <li>
+                        @item.RoomId
+                    </li>
+                    <li>
+                        @if(item.StatusRoom == StatusRoom.Maintenance){
+                            <span class="badge badge-warning">Maintance</span>
+                        }
+                        else if(item.StatusRoom == StatusRoom.NotUsed){
+                            <span class="badge badge-success">Empty</span>
+
+                        }
+                        else{
+                            <span class="badge badge-primary">Used</span>
+
+                        }
+                    </li>
+                </ul>
+
+            </a>
+        </div>
+    }
+</div>

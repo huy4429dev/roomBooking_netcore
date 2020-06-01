@@ -1,0 +1,55 @@
+@{
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Contact";
+}
+@model List<Contact>
+<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm" >#ID
+      </th>
+      <th class="th-sm">Họ tên
+      </th>
+      <th class="th-sm">Email
+      </th>
+      <th class="th-sm">Phone
+      </th>
+      <th class="th-sm">Chủ đề
+      </th>
+      <th class="th-sm ">Nội dung
+      </th>
+      <th class="th-sm text-center">Thời gian
+      </th>
+      <th class="th-sm text-center">Trạng thái</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+       
+  
+@section Css{
+    <link rel="stylesheet" href="~/common/css/jquery.dataTables.min.css">
+    <style>
+      .show-Content{
+        cursor: pointer;
+      }
+      .show-Content:hover{
+         color:blue;
+      }
+    </style>
+}
+@section Script{
+    <script src="~/common/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable( 
+               {  
+                 "order": [[ 0, "desc" ]]
+               },
+            );
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+
+}

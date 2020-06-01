@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using RoomBooking.Models;
+
+namespace RoomBooking.ViewModels
+{
+    public class BlogIndexViewModel
+    {
+
+         public int Id {get;set;}
+         public string Title {get;set;}
+         public string Description {get;set;}
+         public ICollection<BlogCategory> Categories{get;set;}     
+         public string Author{get;set;}
+         public DateTime CreatedAt{get;set;}
+    }
+}
