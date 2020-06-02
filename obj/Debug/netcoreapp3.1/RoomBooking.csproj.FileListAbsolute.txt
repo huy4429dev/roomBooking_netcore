@@ -84,3 +84,5 @@ C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Dining\Index.cshtml.g.cs
 C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Employee\create.cshtml.g.cs
 C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Employee\Index.cshtml.g.cs
+C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Room\TypeRoomCreate.cshtml.g.cs
+C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Room\TypeRoomDetail.cshtml.g.cs

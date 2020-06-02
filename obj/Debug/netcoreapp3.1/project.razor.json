@@ -20521,6 +20521,16 @@
   "RootNamespace": "RoomBooking",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\TypeRoomDetail.cshtml",
+      "TargetPath": "Views\\Admin\\Room\\TypeRoomDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\TypeRoomCreate.cshtml",
+      "TargetPath": "Views\\Admin\\Room\\TypeRoomCreate.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Room\\Index.cshtml",
       "TargetPath": "Views\\Room\\Index.cshtml",
       "FileKind": "mvc"
@@ -20551,11 +20561,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Employee\\Employee\\create.cshtml",
-      "TargetPath": "Views\\Admin\\Employee\\Employee\\create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Dashboard\\Index.cshtml",
       "TargetPath": "Views\\Admin\\Dashboard\\Index.cshtml",
       "FileKind": "mvc"
@@ -20563,11 +20568,6 @@
     {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\Index.cshtml",
       "TargetPath": "Views\\Admin\\Room\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Employee\\Employee\\index.cshtml",
-      "TargetPath": "Views\\Admin\\Employee\\Employee\\index.cshtml",
       "FileKind": "mvc"
     },
     {
