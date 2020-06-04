@@ -20,11 +20,16 @@ namespace RoomBooking.Models
         [Column(TypeName = "VARCHAR")]
         [StringLength(15)]
         public string Phone { get; set; }
-        
+
         [Column(TypeName = "VARCHAR")]
         [StringLength(255)]
         public string Avatar { get; set; }
+        
+        public int BookCount {get;set;}
+        
         public ICollection<Order> Orders { get; set; }
+        public ICollection<BookRoom> BookRooms { get; set; }
         public DateTime CreatedAt { get; set; }
+
     }
 }

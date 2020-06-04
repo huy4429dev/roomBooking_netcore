@@ -42,7 +42,8 @@ namespace RoomBooking
                 .AddErrorDescriber<CustomIdentityErrorDescriber>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders(); ;
-
+                
+            services.AddCors();
             services.AddControllersWithViews()
                           .AddNewtonsoftJson(options =>
                           options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

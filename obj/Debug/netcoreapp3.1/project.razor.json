@@ -20521,6 +20521,11 @@
   "RootNamespace": "RoomBooking",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\ViewModels\\Page\\BookRoomDetail.cshtml",
+      "TargetPath": "ViewModels\\Page\\BookRoomDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\TypeRoomDetail.cshtml",
       "TargetPath": "Views\\Admin\\Room\\TypeRoomDetail.cshtml",
       "FileKind": "mvc"
@@ -20591,6 +20596,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\BookRoom.cshtml",
+      "TargetPath": "Views\\Admin\\Room\\BookRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\User\\index.cshtml",
       "TargetPath": "Views\\Admin\\User\\index.cshtml",
       "FileKind": "mvc"
@@ -20653,6 +20663,11 @@
     {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Template.cshtml",
       "TargetPath": "Views\\Admin\\Template.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\BookRoomDetail.cshtml",
+      "TargetPath": "Views\\Admin\\Room\\BookRoomDetail.cshtml",
       "FileKind": "mvc"
     },
     {

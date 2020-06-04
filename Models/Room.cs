@@ -33,8 +33,9 @@ namespace RoomBooking.Models
         public int? UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
         public StatusRoom StatusRoom { get; set; }
-
         public ICollection<Order> Orders { get; set; }
+
+        public ICollection<BookRoom> BookRooms {get;set;}         
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

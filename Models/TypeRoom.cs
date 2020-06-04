@@ -29,6 +29,7 @@ namespace RoomBooking.Models
         public float Rate { get; set; }
         public ICollection<Room> Rooms { get; set; }
         public ICollection<TypeRoomService> TypeRoomServices { get; set; }
+        public ICollection<BookRoom> BookRooms { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

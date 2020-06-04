@@ -1,0 +1,63 @@
+@{ 
+    Layout = "_LayoutAdmin";
+    ViewBag.Title = "Loại phòng #@Model.Id";
+}
+@model BookRoom
+
+<div class="d-flex justify-content-between">
+    <h4>
+      Chi tiết đặt phòng #@Model.Id
+    </h4>
+    <ol class="breadcrumb py-0" style="background:none">
+        <li class="breadcrumb-item"><a href="/admin/room/book-room">Đặt phòng</a></li>
+        <li class="breadcrumb-item">Cập nhật</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="col-8 mx-auto">
+    <form action="/admin/room/book-room/@Model.Id" method="post">
+        <div asp-validation-summary="All"></div>
+            @if(!String.IsNullOrEmpty(ViewBag.message)){
+                <div class="alert alert-success">@ViewBag.message</div>
+            }
+            <div class="md-form">
+                <input type="text" id="form1" class="form-control" asp-for="Customer.Name" disabled>
+                <label for="form1">Khách hàng</label>
+            </div>
+             <div class="md-form">
+                <input type="text" id="form1" class="form-control" asp-for="Customer.Phone" disabled>
+                <label for="form1">Điện thoại</label>
+            </div>
+             <div class="md-form">
+                <input type="text" id="form1" class="form-control" asp-for="Customer.Email" disabled>
+                <label for="form1">Email</label>
+            </div>
+             <div class="md-form">
+                <input type="text" id="form1" class="form-control" asp-for="TypeRoom.Name" disabled>
+                <label for="form1">Loại phòng</label>
+            </div>
+             <div class="md-form">
+                <input type="text" id="form1" class="form-control" value="@(Model.TimeCreated.ToString("dd/MM/yyyy"))" disabled>
+                <label for="form1">Ngày đặt</label>
+            </div>
+             <div class="md-form">
+                <input type="text" id="form1" class="form-control" asp-for="TimeBook" disabled>
+                <label for="form1">Thời gian đặt (giờ)</label>
+            </div>
+
+            <div class="md-form">
+                
+                <select class="custom-select custom-select-sm"  asp-for="RoomId">
+                        <option selected>Chọn phòng</option>
+                    @foreach (var item in ViewBag.Rooms)
+                    {
+                        <option value="@item.Id">@item.RoomId</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm mx-0" style="width:120px">Thiết lập</button>
+            <button type="button" class="btn btn-danger btn-sm mx-0" style="width:120px">Hủy</button>
+
+    </form>
+    </div>
+</div>

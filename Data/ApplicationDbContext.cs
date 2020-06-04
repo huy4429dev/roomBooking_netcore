@@ -26,6 +26,7 @@ namespace RoomBooking.Data
         public DbSet<BlogPostCategory> blogPostCategories { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<BookRoom> BookRooms { get; set; }
         
         
 
@@ -40,6 +41,7 @@ namespace RoomBooking.Data
 
                 1. n - n: BlogPost - BlogCategory
                 2. n - n: TypeRoom - Service
+                3. n - n: TypeRoom - Customer
 
                 */
 
@@ -74,6 +76,20 @@ namespace RoomBooking.Data
             builder.Entity<TypeRoomService>()
                 .HasOne(bc => bc.TypeRoom)
                 .WithMany(c => c.TypeRoomServices)
+                .HasForeignKey(bc => bc.TypeRoomId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //===================== 3 ========================
+
+            builder.Entity<BookRoom>()
+                .HasOne(bc => bc.Customer)
+                .WithMany(b => b.BookRooms)
+                .HasForeignKey(bc => bc.CustomerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<BookRoom>()
+                .HasOne(bc => bc.TypeRoom)
+                .WithMany(c => c.BookRooms)
                 .HasForeignKey(bc => bc.TypeRoomId)
                 .OnDelete(DeleteBehavior.Cascade);
 

@@ -315,6 +315,51 @@ namespace RoomBooking.Migrations
                     b.ToTable("blogPostCategories");
                 });
 
+            modelBuilder.Entity("RoomBooking.Models.BookRoom", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("BookRoomStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("TimeBook")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("TimeCreated")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("TypeRoomId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("TypeRoomId");
+
+                    b.ToTable("BookRooms");
+                });
+
             modelBuilder.Entity("RoomBooking.Models.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -364,6 +409,9 @@ namespace RoomBooking.Migrations
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(255)
                         .HasDefaultValue("/uploads/employee-avatar.png");
+
+                    b.Property<int>("BookCount")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
@@ -654,20 +702,24 @@ namespace RoomBooking.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(500);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(255);
 
-                    b.Property<int>("Price")
+                    b.Property<int?>("Price")
+                        .IsRequired()
                         .HasColumnType("integer");
 
                     b.Property<float>("Rate")
                         .HasColumnType("real");
 
                     b.Property<string>("Thumbnail")
+                        .IsRequired()
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(255);
 
@@ -774,6 +826,25 @@ namespace RoomBooking.Migrations
                     b.HasOne("RoomBooking.Models.ProductCategory", null)
                         .WithMany("PostCategories")
                         .HasForeignKey("ProductCategoryId");
+                });
+
+            modelBuilder.Entity("RoomBooking.Models.BookRoom", b =>
+                {
+                    b.HasOne("RoomBooking.Models.Customer", "Customer")
+                        .WithMany("BookRooms")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RoomBooking.Models.Room", "Room")
+                        .WithMany("BookRooms")
+                        .HasForeignKey("RoomId");
+
+                    b.HasOne("RoomBooking.Models.TypeRoom", "TypeRoom")
+                        .WithMany("BookRooms")
+                        .HasForeignKey("TypeRoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RoomBooking.Models.Order", b =>

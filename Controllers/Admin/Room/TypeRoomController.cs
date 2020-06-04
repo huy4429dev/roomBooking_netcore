@@ -94,7 +94,8 @@ namespace RoomBooking.Controllers
         [HttpPost("update/{id}")]
         public async Task<IActionResult> Update([FromForm] TypeRoom model, int id)
         {
-
+            
+                
             ViewBag.services = await _context.Services.ToListAsync();
 
             if (model.Price.ToString() == "0")
@@ -129,8 +130,9 @@ namespace RoomBooking.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewBag.message = "Cập nhật loại phòng thành công";
+                    
 
-                    return View("/Views/Admin/Room/TypeRoomCreate.cshtml", model);
+                    return Redirect("/admin/room/type/detail/" + id);
 
                 }
 
@@ -154,6 +156,7 @@ namespace RoomBooking.Controllers
                     _context.TypeRooms.Remove(typeRoom);
                     await _context.SaveChangesAsync();
                     ViewBag.msgDelete = "Xóa loại phòng thành công";
+                     return Redirect("/admin/room/type");
                 }
 
                 return BadRequest("Không tồn tại công việc");

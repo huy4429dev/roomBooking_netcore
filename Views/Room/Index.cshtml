@@ -3,117 +3,161 @@
 	ViewBag.Title = "Đặt phòng";
 }
 
+@model List<TypeRoom>
+
 	<div id="colorlib-rooms" class="colorlib-light-grey">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 room-wrap animate-box">
-						<a href="images/room-1.jpg" class="room image-popup-link" style="background-image: url(/uploads/room-1.jpg);"></a>
-						<div class="desc text-center">
-							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-							<h3><a href="rooms-suites.html">Suite</a></h3>
-							<p class="price">
-								<span class="currency">$</span>
-								<span class="price-room">149</span>
-								<span class="per">/ per night</span>
-							</p>
-							<ul>
-								<li><i class="icon-check"></i> Only 10 rooms are available</li>
-								<li><i class="icon-check"></i> Breakfast included</li>
-								<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-							</ul>
-							<p><a class="btn btn-primary">Book now!</a></p>
+					@foreach ( var item in Model)
+					{
+						<div class="col-md-4 room-wrap animate-box">
+							<a href="@item.Thumbnail" class="room image-popup-link" style="background-image: url(@(item.Thumbnail.Replace("\\","/")));"></a>
+							<div class="desc text-center">
+								<span class="rate-star">
+									@for (int i = 0; i < item.Rate; i++)
+									{
+										<i class="icon-star-full full"></i>
+									}
+								</span>
+								<h3><a href="rooms-suites.html">@item.Name</a></h3>
+								<p class="price">
+									<span class="currency">$</span> 
+									<span class="price-room">@(item.Price.HasValue  ? item.Price.Value.ToString("N3") : "") </span>
+									<span class="per">/ đêm</span>
+								</p>
+								<ul>
+									
+									 @foreach (var service in item.TypeRoomServices)
+									 { 
+										<li><i class="icon-check"></i>
+										@ViewBag.Services[service.ServiceId][0]
+										</li>
+
+									 }
+								</ul>
+								<p><a class="btn btn-primary book-room" data-toggle="modal" data-target="#exampleModal" data-type-room=@item.Id>Đặt phòng</a></p>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4 room-wrap animate-box">
-						<a href="images/room-2.jpg" class="room image-popup-link" style="background-image: url(/uploads/room-2.jpg);"></a>
-						<div class="desc text-center">
-							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
-							<h3><a href="rooms-suites.html">Double Room</a></h3>
-							<p class="price">
-								<span class="currency">$</span>
-								<span class="price-room">199</span>
-								<span class="per">/ per night</span>
-							</p>
-							<ul>
-								<li><i class="icon-check"></i> Perfect for traveling couples</li>
-								<li><i class="icon-check"></i> Breakfast included</li>
-								<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-							</ul>
-							<p><a class="btn btn-primary btn-book">Book now!</a></p>
-						</div>
-					</div>
-					<div class="col-md-4 room-wrap animate-box">
-						<a href="images/room-3.jpg" class="room image-popup-link" style="background-image: url(/uploads/room-3.jpg);"></a>
-						<div class="desc text-center">
-							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
-							<h3><a href="rooms-suites.html">Family Room</a></h3>
-							<p class="price">
-								<span class="currency">$</span>
-								<span class="price-room">249</span>
-								<span class="per">/ per night</span>
-							</p>
-							<ul>
-								<li><i class="icon-check"></i> Two double beds</li>
-								<li><i class="icon-check"></i> Babysitting facilities</li>
-								<li><i class="icon-check"></i> 1 free bed available on request</li>
-							</ul>
-							<p><a class="btn btn-primary btn-book">Book now!</a></p>
-						</div>
-					</div>
-					<div class="col-md-4 room-wrap animate-box">
-						<a href="images/room-4.jpg" class="room image-popup-link" style="background-image: url(/uploads/room-4.jpg);"></a>
-						<div class="desc text-center">
-							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
-							<h3><a href="rooms-suites.html">Classic Double Room</a></h3>
-							<p class="price">
-								<span class="currency">$</span>
-								<span class="price-room">179</span>
-								<span class="per">/ per night</span>
-							</p>
-							<ul>
-								<li><i class="icon-check"></i> Only 10 rooms are available</li>
-								<li><i class="icon-check"></i> Breakfast included</li>
-								<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-							</ul>
-							<p><a class="btn btn-primary btn-book">Book now!</a></p>
-						</div>
-					</div>
-					<div class="col-md-4 room-wrap animate-box">
-						<a href="images/room-5.jpg" class="room image-popup-link" style="background-image: url(/uploads/room-5.jpg);"></a>
-						<div class="desc text-center">
-							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
-							<h3><a href="rooms-suites.html">Superior Double Room</a></h3>
-							<p class="price">
-								<span class="currency">$</span>
-								<span class="price-room">270</span>
-								<span class="per">/ per night</span>
-							</p>
-							<ul>
-								<li><i class="icon-check"></i> Perfect for traveling couples</li>
-								<li><i class="icon-check"></i> Breakfast included</li>
-								<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-							</ul>
-							<p><a class="btn btn-primary btn-book">Book now!</a></p>
-						</div>
-					</div>
-					<div class="col-md-4 room-wrap animate-box">
-						<a href="images/room-6.jpg" class="room image-popup-link" style="background-image: url(/uploads/room-6.jpg);"></a>
-						<div class="desc text-center">
-							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i></span>
-							<h3><a href="rooms-suites.html">Superior Family Room</a></h3>
-							<p class="price">
-								<span class="currency"><small>$</small></span>
-								<span class="price-room">270</span>
-								<span class="per">/ per night</span>
-							</p>
-							<ul>
-								<li><i class="icon-check"></i> Perfect for traveling couples</li>
-								<li><i class="icon-check"></i> Breakfast included</li>
-								<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-							</ul>
-							<p><a class="btn btn-primary btn-book">Book now!</a></p>
-						</div>
-					</div>
+					}
 				</div>
 			</div>
 		</div>
+				 
+	  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header pb-3">
+			<h5 class="modal-title" id="exampleModalLabel">Đặt phòng</h5>
+		</div>
+      <div class="modal-body">
+     	 <div class="alert-bookroom alert alert-success">
+						Chúng tôi sẽ liên lạc lại để xác nhận thông tin của bạn
+		 </div>  
+   						   <div class="alert-bookroom-err alert alert-danger">
+                        Lỗi
+		  </div>  
+          <div class="form-group">
+              <input type="text" class="form-control" name="fullname" placeholder="Họ tên">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" name="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" name="phone" placeholder="Số điện thoại">
+          </div>
+          <div class="form-group">
+              <input id="datepicker" type="text" class="form-control" name="ngay_dat" placeholder="Ngày đặt">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" name="thoi_gian_dat" placeholder="Thời gian đặt (giờ)">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button id="bookroom" type="button" class="btn btn-primary">Đặt</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Css{
+	    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+}
+
+@section Script{
+	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+			$( function() {
+				$( "#datepicker" ).datepicker();
+			} );
+
+		let bookRoom = document.querySelector('#bookroom');
+		let alertBookRoom = document.querySelector('.alert-bookroom');
+		let alertBookRoomErr = document.querySelector('.alert-bookroom-err');
+		alertBookRoom.style.display = 'none';
+		alertBookRoomErr.style.display = 'none';
+		let typeRooms = document.querySelectorAll('.book-room');
+		var typeRoom = 1;
+		typeRooms.forEach(item => {
+			item.addEventListener('click', function(){
+				typeRoom = this.dataset.typeRoom;
+			})
+		})
+
+
+    	function addBookRoom() {
+		let url = "/dat-phong";
+		let fullname = document.querySelector('input[name="fullname"]');
+		let phone = document.querySelector('input[name="phone"]');
+		let email = document.querySelector('input[name="email"]');
+		let ngay_dat = document.querySelector('input[name="ngay_dat"]');
+		let thoi_gian_dat = document.querySelector('input[name="thoi_gian_dat"]');
+	
+		let data = {
+			Email: email.value,
+			Phone: phone.value,
+			FullName: fullname.value,
+            TimeCreated: ngay_dat.value,
+            TimeBook: thoi_gian_dat.value,
+			TypeRoomId: typeRoom,
+		};
+		fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				if (data == 1) {
+					alertBookRoom.style.display = 'block';
+					fullname.value              = '';
+					phone.value                 = '';
+					email.value                 = '';
+					ngay_dat.value              = '';
+					thoi_gian_dat.value         = '';
+					setTimeout(() => {
+						alertBookRoom.style.display = 'none';
+		
+					},10000)
+					
+				}
+                else{
+                    alertBookRoomErr.style.display = 'block'; 
+					console.log(data);
+                    alertBookRoomErr.innerHTML = data[0][0].errorMessage;
+					setTimeout(() => {
+						alertBookRoomErr.style.display = 'none';
+					},10000)
+                }
+			
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+	bookRoom.addEventListener('click',addBookRoom);
+	</script>
+}
