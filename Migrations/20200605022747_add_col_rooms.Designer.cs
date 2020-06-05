@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RoomBooking.Data;
@@ -9,9 +10,10 @@ using RoomBooking.Data;
 namespace RoomBooking.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200605022747_add_col_rooms")]
+    partial class add_col_rooms
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -636,9 +638,6 @@ namespace RoomBooking.Migrations
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Note")
-                        .HasColumnType("text");
-
                     b.Property<string>("Phone")
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(15);
@@ -652,9 +651,6 @@ namespace RoomBooking.Migrations
                     b.Property<string>("Thumbnail")
                         .HasColumnType("VARCHAR")
                         .HasMaxLength(255);
-
-                    b.Property<int?>("TimeBook")
-                        .HasColumnType("integer");
 
                     b.Property<int?>("TypeRoomId")
                         .HasColumnType("integer");

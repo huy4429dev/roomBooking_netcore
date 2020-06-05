@@ -21,8 +21,7 @@ namespace CarBooking.Admin.Controllers{
         [HttpGet]
         public  async Task<IActionResult> Index(){
              
-            var query =   _ctx.Contacts.AsQueryable();
-            var data  = await query.OrderByDescending(item => item.Id).ToListAsync();
+            var data  = await _ctx.Contacts.OrderByDescending(item => item.Id).ToListAsync();
             return View("Views/Admin/Contact/Index.cshtml", data);
         }
 

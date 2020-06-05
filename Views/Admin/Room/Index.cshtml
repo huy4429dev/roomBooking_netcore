@@ -9,9 +9,15 @@
  
 
 <div class="row">
+    @{
+        var i = 1;
+    }
     @foreach (var item in Model)
     {
-        <div class="col-3 mb-3">
+        <div class="col-3 mb-3 position-relative d-flex flex-center">
+            @if(item.BookRooms.Count > 0){
+                <span class="badge badge-primary room-alert" data-show-alert="#modal-alert-@i">@item.BookRooms.Count</span>
+            }
             <a style="color:black" href="/admin/room/@item.Id">
                 <img width="150" src="/uploads/house.png" alt="">
                 <ul>
@@ -20,20 +26,70 @@
                     </li>
                     <li>
                         @if(item.StatusRoom == StatusRoom.Maintenance){
-                            <span class="badge badge-warning">Maintance</span>
+                            <span class="d-inline-block badge badge-warning" style="width:68px">Maintance</span>
                         }
                         else if(item.StatusRoom == StatusRoom.NotUsed){
-                            <span class="badge badge-success">Empty</span>
+                            <span class="d-inline-block badge badge-success" style="width:68px">Empty</span>
 
                         }
                         else{
-                            <span class="badge badge-primary">Used</span>
+                            <span class="d-inline-block badge badge-primary" style="width:68px">Used</span>
 
                         }
                     </li>
                 </ul>
-
             </a>
+            <div class="modal-alert position-absolute" id="modal-alert-@i">
+                @foreach (var bookRoom in item.BookRooms)
+                {
+                        <p><span style="display:inline-block; width:75px">Thời gian:</span> @bookRoom.TimeCreated.ToString("dd/MM/yyyy") </p>
+                        <p><span style="display:inline-block; width:75px">Khách:</span>@bookRoom.Customer.Name</p>
+                        <p><span style="display:inline-block; width:75px">Số giờ:</span> @bookRoom.TimeBook </p>
+                        <hr>
+                    
+                }
+             </div>
         </div>
+
+        i++;
     }
 </div>
+
+@section Css{
+    <style>
+         .room-alert{
+             position:absolute;
+             right:20px;
+             top:0;
+             cursor: pointer;
+         }
+
+         .modal-alert{
+             top: 7px;
+            right: 32px;
+            width: 200px;
+            background: #fff3b5;
+            padding: 15px 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px  #3332;
+            font-size: 14px;
+            display: none;
+         }
+    </style>
+}
+@section Script{
+    <script>
+         let roomAlerts = document.querySelectorAll('.room-alert');
+         roomAlerts.forEach(item => {
+            item.addEventListener('mouseenter', function(){
+                let  alert = document.querySelector(this.dataset.showAlert);
+                alert.style.display = 'block';
+            })
+            item.addEventListener('mouseleave', function(){
+                let  alert = document.querySelector(this.dataset.showAlert);
+                alert.style.display = 'none';
+            })
+         })
+
+    </script>
+}

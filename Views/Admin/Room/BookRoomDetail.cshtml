@@ -14,7 +14,7 @@
     </ol>
 </div>
 <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-6 mx-auto">
     <form action="/admin/room/book-room/@Model.Id" method="post">
         <div asp-validation-summary="All"></div>
             @if(!String.IsNullOrEmpty(ViewBag.message)){
@@ -51,6 +51,10 @@
                         <option selected>Chọn phòng</option>
                     @foreach (var item in ViewBag.Rooms)
                     {
+                        if( item.Id == Model.RoomId){
+                            <option value="@item.Id" selected>@item.RoomId</option>
+                            continue;
+                        }
                         <option value="@item.Id">@item.RoomId</option>
                     }
                 </select>

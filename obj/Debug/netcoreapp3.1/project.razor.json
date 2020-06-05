@@ -20571,6 +20571,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Customer\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Customer\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Administrator\\Desktop\\C#\\RoomBooking\\Views\\Admin\\Room\\Index.cshtml",
       "TargetPath": "Views\\Admin\\Room\\Index.cshtml",
       "FileKind": "mvc"

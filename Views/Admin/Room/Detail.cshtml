@@ -3,54 +3,130 @@
     ViewBag.Title = "Phòng";
 }
 @model Room
-<h4>
+<div class="d-flex justify-content-between">
+    <h4>
      Phòng #@Model.RoomId
-</h4>
-
+    </h4>
+    <ol class="breadcrumb py-0" style="background:none">
+        <li class="breadcrumb-item"><a href="/admin/room">Danh sách phòng</a></li>
+        <li class="breadcrumb-item">Chi tiết</li>
+    </ol>
+</div>
 <div class="row">
-     <div class="col-4 mx-auto">
-            <form asp-controller="ConfigRoom" asp-action="Config" method="post">
+     <div class="col-6 mx-auto">
+            <form asp-controller="Room" asp-action="Update" asp-route-id="@Model.Id" method="post" class="pb-5">
                 <div asp-validation-summary="All"></div>
                     @if(!String.IsNullOrEmpty(ViewBag.message)){
                         <div class="alert alert-success">@ViewBag.message</div>
                     }
                     <div class="md-form">
-                        <input type="text" id="form1" class="form-control" name="countRoom">
-                        <label for="form1">Mã phòng</label>
-                    </div>
-                    <div class="md-form">
-                     <select class="custom-select custom-select-sm">
-                            <option selected>Thêm khách hàng</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                     <select class="custom-select custom-select-sm" asp-for="StatusRoom">
+                            <option selected>Chọn trạng thái</option>
+                            <option value="2">Thêm khách hàng</option>
+                            <option value="1">Trống</option>
+                            <option value="0">Bảo trì</option>
                     </select>
                     </div>
+                  
+                  <select class="custom-select custom-select-sm">
+                        <option selected>Loại phòng</option>
+                        @foreach (var TypeRoom in ViewBag.TypeRoom)
+                        {
+                            <option value="@TypeRoom.Id">@TypeRoom.Name</option>
+                        }
+                    </select>
                     <div class="md-form">
-                        <input type="text" id="form3" class="form-control" name="roomId">
-                        <label for="form1">Loại phòng</label>
-                    </div>
-                    <div class="md-form">
-                        <input type="text" id="form4" class="form-control" name="roomId">
+                        <input type="text" id="form4" class="form-control" asp-for="Phone">
                         <label for="form1">Số điện thoại</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="form5" class="form-control" name="roomId">
+                        <input type="text" id="form5" class="form-control" asp-for="Name">
                         <label for="form1">Họ tên</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="form5" class="form-control" name="roomId">
+                        <input type="text" id="form5" class="form-control" asp-for="IdentityCard">
                         <label for="form1">Chứng minh nhân dân</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="form6" class="form-control" name="roomId">
+                        <input type="text" id="form6" class="form-control" asp-for="Address">
                         <label for="form1">Địa chỉ</label>
                     </div>
                     <div class="md-form">
-                        <input type="text" id="form6" class="form-control" name="roomId">
-                        <label for="form1">Thời gian đặt</label>
+                        <input type="text" id="form6" class="form-control" asp-for="TimeBook">
+                        <label for="form1">Thời gian đặt (giờ)</label>
+                    </div>
+                      <div class="form-group">
+                        <label for="form1">Ghi chú</label>
+                        <textarea  class="form-control" asp-for="Note"></textarea>
                     </div>
                     <button class="btn btn-primary btn-rounded btn-sm my-0" type="submit">Thiết lập</button>
             </form>
     </div>
-</div>
+</div> 
+@if(Model.StatusRoom == StatusRoom.Used){
+    <div class="clock">
+    <ul class="p-0">
+        <li class="li-clock"><span id="hours"></span></li> : 
+        <li class="li-clock"><span id="minutes"></span></li> :
+        <li class="li-clock"><span id="seconds"></span></li> 
+    </ul>
+    </div>
+}
+@section Css{
+    <style>
+            li.li-clock {
+            display: inline-block;
+            font-size: 14px;
+            list-style-type: none;
+            padding: 1em;
+            text-transform: uppercase;
+            }
+
+            li.li-clock span {
+            display: block;
+            font-size: 14px;
+            }
+
+
+            .clock {
+                color: #333;
+                margin: 0 auto;
+                text-align: center;
+                position: absolute;
+                top: 20%;
+                right: 40px;
+                border: 2px solid #4285f4;
+            }
+    </style>
+}
+
+@section Script{
+    <script>
+        const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+        countDown = new Date("@(Model.UpdatedAt.AddHours(2))").getTime();
+        console.log(countDown);
+        if(countDown > 0){
+            console.log(11);
+
+            x = setInterval(function() {    
+
+            let now = new Date().getTime(),
+                distance = countDown - now;
+                document.getElementById('hours').innerText = Math.floor((distance) / (hour)),
+                document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
+                document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+
+            //do something later when date is reached
+            if (distance < 0) {
+            clearInterval(x);
+            'TIME OVER ';
+            }
+
+            }, second)
+
+        }
+    </script>
+}

@@ -69,7 +69,7 @@ namespace RoomBooking.Page.Controllers
                     Phone = model.Phone,
                     Email = model.Email,
                     CreatedAt = DateTime.Now,
-                    Avatar = "/uploads/employee-avatar.png",
+                    Avatar = "/uploads/avatar-customer.jpg",
                     BookCount = 1
                 };
                 
@@ -96,5 +96,7 @@ namespace RoomBooking.Page.Controllers
 
             return Ok(1);
         }
+    
+
     }
 }

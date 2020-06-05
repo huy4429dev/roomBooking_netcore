@@ -89,3 +89,4 @@ C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Room\BookRoom.cshtml.g.cs
 C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\ViewModels\Page\BookRoomDetail.cshtml.g.cs
 C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Room\BookRoomDetail.cshtml.g.cs
+C:\Users\Administrator\Desktop\C#\RoomBooking\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Customer\Index.cshtml.g.cs
